@@ -31,15 +31,13 @@ public class breakTime extends AppCompatActivity {
         workBundle.putInt("break", breakMin);
         toWorking.putExtras(workBundle);
 
-        Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+        //Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
 
         timer.schedule(
                 new TimerTask() {
                     @Override
                     public void run() {
-                        r.play();
-                        //r.stop();
                         startActivity(toWorking);
                     }
                 },

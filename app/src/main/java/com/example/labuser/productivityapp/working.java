@@ -1,12 +1,14 @@
 package com.example.labuser.productivityapp;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,15 +33,20 @@ public class working extends AppCompatActivity {
         breakBundle.putInt("break", breakMin);
         toBreakTime.putExtras(breakBundle);
 
-        Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+        final AnimationDrawable hourglassAnimation;
+        //Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+
+        ImageView anim = (ImageView) findViewById(R.id.hourGlassAnim);
+        anim.setBackgroundResource(R.drawable.animation);
+        hourglassAnimation = (AnimationDrawable) anim.getBackground();
+        hourglassAnimation.start();
 
          timer.schedule(
                 new TimerTask() {
                     @Override
                     public void run() {
-                        r.play();
-                        //r.stop();
+                        //hourglassAnimation.start();
                         startActivity(toBreakTime);
 
                     }
