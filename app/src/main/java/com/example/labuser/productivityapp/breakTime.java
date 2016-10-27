@@ -1,12 +1,15 @@
 package com.example.labuser.productivityapp;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -31,17 +34,35 @@ public class breakTime extends AppCompatActivity {
         workBundle.putInt("break", breakMin);
         toWorking.putExtras(workBundle);
 
-        //Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        //final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+
+        TextView breakTxt =(TextView)findViewById(R.id.txtBreakTime);
+        breakTxt.setText("Take a break for: " + breakMin + " minute(s)");
+
+        final AnimationDrawable hourglassAnimation;
+        Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+
+        ImageView anim = (ImageView) findViewById(R.id.hourGlassAnim);
+
+        android.view.ViewGroup.LayoutParams layoutParams = anim.getLayoutParams();
+        layoutParams.width = 400;
+        layoutParams.height = 400;
+        anim.setLayoutParams(layoutParams);
+
+        anim.setBackgroundResource(R.drawable.animation);
+        hourglassAnimation = (AnimationDrawable) anim.getBackground();
+        hourglassAnimation.start();
+
 
         timer.schedule(
                 new TimerTask() {
                     @Override
                     public void run() {
+                        r.play();
                         startActivity(toWorking);
                     }
                 },
-                workMin * 60 * 1000
+                breakMin * 60 * 1000
         );
     }
 

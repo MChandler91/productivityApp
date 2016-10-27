@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Breaking!"
+        android:text=" Break Time!"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -28,4 +28,20 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
         android:onClick="cancelBtn" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hourGlassAnim"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/txtBreakTime"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp" />
 </RelativeLayout>

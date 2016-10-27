@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,6 +28,9 @@ public class working extends AppCompatActivity {
         int workMin = bundle.getInt("work");
         int breakMin = bundle.getInt("break");
 
+        TextView workTxt =(TextView)findViewById(R.id.txtWorkTime);
+        workTxt.setText("Working for: " + workMin + " minute(s)");
+
         final Intent toBreakTime = new Intent(this, breakTime.class);
         Bundle breakBundle = new Bundle();
         breakBundle.putInt("work", workMin);
@@ -34,10 +38,16 @@ public class working extends AppCompatActivity {
         toBreakTime.putExtras(breakBundle);
 
         final AnimationDrawable hourglassAnimation;
-        //Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        //final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
+        Uri alarm = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        final Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), alarm);
 
         ImageView anim = (ImageView) findViewById(R.id.hourGlassAnim);
+
+        android.view.ViewGroup.LayoutParams layoutParams = anim.getLayoutParams();
+        layoutParams.width = 400;
+        layoutParams.height = 400;
+        anim.setLayoutParams(layoutParams);
+
         anim.setBackgroundResource(R.drawable.animation);
         hourglassAnimation = (AnimationDrawable) anim.getBackground();
         hourglassAnimation.start();
@@ -46,7 +56,7 @@ public class working extends AppCompatActivity {
                 new TimerTask() {
                     @Override
                     public void run() {
-                        //hourglassAnimation.start();
+                        r.play();
                         startActivity(toBreakTime);
 
                     }
