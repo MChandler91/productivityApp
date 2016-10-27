@@ -19,7 +19,8 @@
         android:layout_above="@+id/breakMin"
         android:layout_alignLeft="@+id/breakMin"
         android:layout_alignStart="@+id/breakMin"
-        android:hint="Working Minutes" />
+        android:hint="Working Minutes"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,7 +31,8 @@
         android:layout_marginBottom="108dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:hint="Break Minutes" />
+        android:hint="Break Minutes"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,4 +43,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="43dp"
         android:onClick="startWork" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Productivity Manager"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Schedule your time for \n works and breaks"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:gravity="center" />
 </RelativeLayout>
